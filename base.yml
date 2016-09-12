@@ -5,10 +5,16 @@
   pre_tasks:
     - name: Set hostname
       hostname: name={{inventory_hostname}}
+  roles:
+    - { role: 'common', tags: 'common' }
+  vars_files:
+    - global.yml
 
-- name: Base bamboo service
+- name: Services
   hosts: base
   sudo: yes
   roles:
-    - { role: nodejs, tags: nodejs }
-    - { role: bamboo, tags: bamboo }
+    - { role: 'service', tags: 'big-service', service_name: 'big-service' }
+    - { role: 'service', tags: 'panda-service', service_name: 'panda-service' }
+  vars_files:
+    - global.yml

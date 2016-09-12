@@ -1,0 +1,9 @@
+[program:{{ service_name }}]
+command=/usr/bin/python {{ service_home }}/{{ service_name }}/main.py {{ service_home }}/{{ service_name }}/config.yml
+directory = {{ service_home }}/{{ service_name }}
+user = {{ service_user }}
+autorestart = true
+autostart = true
+stderr_logfile = {{ service_home }}/{{ service_name }}/service.log
+stdout_logfile = {{ service_home }}/{{ service_name }}/service.log
+
